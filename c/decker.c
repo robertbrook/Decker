@@ -4,11 +4,10 @@
 
 int should_exit=0;
 
-#include <SDL_version.h>
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "io_sdl2.h"
-#else
+#ifdef DECKER_SDL1
 #include "io_sdl1.h"
+#else
+#include "io_sdl3.h"
 #endif
 
 void save_deck(lv*path); // forward refs
