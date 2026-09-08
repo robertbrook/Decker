@@ -19,8 +19,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y \
-            libsdl2-dev \
-            libsdl2-image-dev \
+            libsdl3-dev \
+            libsdl3-image-dev \
             xxd
 
       - name: Set up Node.js
