@@ -19,9 +19,37 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y \
-            libsdl2-dev \
-            libsdl2-image-dev \
+            build-essential \
+            cmake \
+            libjpeg-dev \
+            libpng-dev \
+            libtiff-dev \
+            libwebp-dev \
+            libx11-dev \
+            libxext-dev \
+            libxrandr-dev \
+            libxcursor-dev \
+            libxfixes-dev \
+            libxi-dev \
+            libxss-dev \
+            libxtst-dev \
+            libxkbcommon-dev \
+            libwayland-dev \
+            ninja-build \
+            pkg-config \
             xxd
+          git clone --depth 1 --branch release-3.4.16 https://github.com/libsdl-org/SDL.git /tmp/SDL
+          cmake -S /tmp/SDL -B /tmp/SDL/build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DSDL_TESTS=OFF
+          sudo cmake --build /tmp/SDL/build --target install
+          git clone --depth 1 --branch release-3.4.6 https://github.com/libsdl-org/SDL_image.git /tmp/SDL_image
+          cmake -S /tmp/SDL_image -B /tmp/SDL_image/build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DSDLIMAGE_SAMPLES=OFF \
+            -DSDLIMAGE_TESTS=OFF
+          sudo cmake --build /tmp/SDL_image/build --target install
+          sudo ldconfig
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
