@@ -5,10 +5,9 @@ EXTRA_FLAGS?=
 ifneq ("$(wildcard /usr/bin/olpc-hwinfo)","")
 	# building on an OLPC; use SDL 1.2
 	SDL=$(shell sdl-config --cflags --libs)
-	SDL:=$(SDL) -lSDL_image
+	SDL:=$(SDL) -lSDL_image -D DECKER_SDL1
 else
-	SDL=$(shell sdl2-config --cflags --libs)
-	SDL:=$(SDL) -lSDL2_image
+	SDL=$(shell pkg-config --cflags --libs sdl3 sdl3-image)
 endif
 ifeq ($(UNAME),Darwin)
 	OPEN=open

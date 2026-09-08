@@ -26,14 +26,14 @@ Decker is also available as a native application, written in C. Building Native-
 
 - a c compiler and libc
 - the `xxd` utility (standard with MacOS and most \*nix distros)
-- [SDL2](https://www.libsdl.org/download-2.0.php)
-- [SDL2_image](https://github.com/libsdl-org/SDL_image)
+- [SDL3](https://www.libsdl.org/)
+- [SDL3_image](https://github.com/libsdl-org/SDL_image)
 
-On MacOS, BSD, or Linux, fetch the appropriate SDL2 packages and then build with `make`. This has also been reported to build and run successfully under WSL:
+On MacOS, BSD, or Linux, fetch the appropriate SDL3 packages and then build with `make`. This has also been reported to build and run successfully under WSL:
 
 ```
-brew install sdl2 sdl2_image                                   # MacOS/Homebrew
-sudo apt install libsdl2-2.0-0 libsdl2-dev libsdl2-image-dev   # Debian
+brew install sdl3 sdl3_image                                   # MacOS/Homebrew
+sudo apt install libsdl3-0 libsdl3-dev libsdl3-image-dev        # Debian
 nix-shell                                                      # Nix
 
 make lilt            # (optional) command-line tools
@@ -43,7 +43,7 @@ make test            # (optional) regression test suite
 sudo make install    # (optional) install lilt, decker, and lil syntax profiles
 ```
 
-If SDL2 is not available, Native-Decker can also be built with [reduced functionality](c/io_sdl1.h) against SDL1.2 and a corresponding version of `SDL_image`. This compatibility shim is presently designed with the [OLPC XO-4](https://wiki.laptop.org/go/XO-4_Touch) and its default Fedora 18 OS image in mind; expect to do some tinkering with the makefile for other platforms:
+If SDL3 is not available, Native-Decker can also be built with [reduced functionality](c/io_sdl1.h) against SDL1.2 and a corresponding version of `SDL_image`. This compatibility shim is presently designed with the [OLPC XO-4](https://wiki.laptop.org/go/XO-4_Touch) and its default Fedora 18 OS image in mind; expect to do some tinkering with the makefile for other platforms:
 ```
 sudo yum install SDL-devel SDL_image-devel
 
